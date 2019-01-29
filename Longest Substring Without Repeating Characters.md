@@ -70,4 +70,4 @@ var lengthOfLongestSubstring = function(s) {
 # complexity
 time complexity: O(2n)
 
-space complexity: O(n)
+space complexity: O(min(m,,n)) 字符串大小:n, 字符集/字母:m。
