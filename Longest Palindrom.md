@@ -12,7 +12,7 @@
 输入: "cbbd"
 输出: "bb"
 # solution
-## a.
+## a.动态规划
 ```javascript
 /**
  * @param {string} s
@@ -40,7 +40,7 @@ var longestPalindrome = function (s) {
   return s.slice(left, right + 1)
 };
 ```
-### b.
+### b.中心扩展法
 ```javascript
 /**
  * @param {string} s
