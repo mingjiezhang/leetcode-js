@@ -30,7 +30,7 @@ var longestPalindrome = function (s) {
     dp[i] = new Array()
     dp[i][i] = true
     for (j = i + 1; j < n; j++) {
-      dp[i][j] = s[i] === s[j] && (j - i < 3 || dp[i + 1][j - 1])
+      dp[i][j] = s[i] === s[j] && (j - i < 2 || dp[i + 1][j - 1])
       if (dp[i][j] && right - left < j - i) {
         left = i;
         right = j;
