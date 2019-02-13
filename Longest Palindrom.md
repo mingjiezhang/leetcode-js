@@ -12,7 +12,7 @@
 输入: "cbbd"
 输出: "bb"
 # solution
-a.
+## a.
 ```javascript
 /**
  * @param {string} s
@@ -39,9 +39,45 @@ var longestPalindrome = function (s) {
   }
   return s.slice(left, right + 1)
 };
-b.
+```
+### b.
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+  if (s.length < 2) {
+    return s;
+  }
+  let start = 0,
+    end = 0;
+  for (let i = 0; i < s.length; i++) {
+    let len1 = singlePalindrome(s, i, i);
+    let len2 = singlePalindrome(s, i, i + 1);
+    let maxLen = Math.max(len1, len2);
+    if (maxLen > end - start) {
+      //偶数:(max-2)/2,奇数:(max-1)/2
+      start = i - (maxLen % 2 === 0 ? (maxLen - 2) / 2 : (maxLen - 1) / 2);
+      end = start + maxLen - 1;
+    }
+  }
+  return s.slice(start, end + 1);
+};
+
+function singlePalindrome(s, start, end) {
+  let L = start,
+    R = end;
+  while (L >= 0 && R < s.length && s[L] == s[R]) {
+    L--;
+    R++;
+  }
+  //2两种情况，a.为i,i多加的一次，b.为i,i+1初次出错也为2，后续多加一次也为2
+  //R-L+1-2
+  return R - L - 1;
+}
 ```
 # complexity
-time complexity: O(2n)
+time complexity: O(n^2)
 
-space complexity: O(min(m,,n)) 字符串大小:n, 字符集/字母:m。
+space complexity: a: O(n^2); b: O(n^2)
