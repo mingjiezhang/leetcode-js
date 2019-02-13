@@ -80,4 +80,4 @@ function singlePalindrome(s, start, end) {
 # complexity
 time complexity: O(n^2)
 
-space complexity: a: O(n^2); b: O(n^2)
+space complexity: a: O(n^2); b: O(1)
